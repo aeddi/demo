@@ -21,19 +21,21 @@ type manualCheck struct {
 func config(gh *client.GitHub) ([]automaticCheck, []manualCheck) {
 	auto := []automaticCheck{
 		{
-			Description: "Changes on 'tm2' folder should be reviewed/authored by at least one member of both EU and US teams",
+			Description: "Changes on 'foo' file should be reviewed by at least one [Bot PR](https://github.com/gnolang/gno/pull/3037) reviewer",
 			If: c.And(
-				c.FileChanged(gh, "tm2"),
 				c.BaseBranch("main"),
+				c.Or(
+					c.FileChanged(gh, "foo"),
+					c.FileChanged(gh, "bar"),
+					c.FileChanged(gh, "baz"),
+				),
 			),
 			Then: r.And(
+				r.Author("aeddi"),
 				r.Or(
-					r.ReviewByTeamMembers(gh, "eu", 1),
-					r.AuthorInTeam(gh, "eu"),
-				),
-				r.Or(
-					r.ReviewByTeamMembers(gh, "us", 1),
-					r.AuthorInTeam(gh, "us"),
+					r.ReviewByUser(gh, "thehowl"),
+					r.ReviewByUser(gh, "ltzmaxwell"),
+					r.ReviewByUser(gh, "zivkovicmilos"),
 				),
 			),
 		},
@@ -47,9 +49,35 @@ func config(gh *client.GitHub) ([]automaticCheck, []manualCheck) {
 			If:          c.Always(), // Or only if c.BaseBranch("main") ?
 			Then:        r.UpToDateWith(gh, r.PR_BASE),
 		},
+		{
+			Description: "Label bug is applied for no other reason than testing",
+			If:          c.HeadBranch("demo-pr"),
+			Then:        r.Label(gh, "bug"),
+		},
 	}
 
 	manual := []manualCheck{
+		{
+			Description: "Demo manual check",
+			If:          c.Always(),
+		},
+		{
+			Description: "Demo manual check with lot of (useless) details",
+			If: c.Or(
+				c.Always(),
+				c.And(
+					c.Label("bug"),
+					c.BaseBranch("main"),
+					c.Or(
+						c.FileChanged(gh, "misc/deployments"),
+						c.FileChanged(gh, `misc/docker-\.*`),
+						c.FileChanged(gh, "tm2/pkg/p2p"),
+						c.FileChanged(gh, "contribs"),
+					),
+				),
+			),
+			Teams: []string{"foo", "bar", "baz"},
+		},
 		{
 			Description: "Determine if infra needs to be updated",
 			If: c.And(
