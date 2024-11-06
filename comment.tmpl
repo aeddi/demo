@@ -12,15 +12,15 @@ These requirements are defined in this [configuration file](https://github.com/G
 
 {{ if .AutoRules }}<details><summary><b>Details</b></summary><blockquote>
 {{ range .AutoRules }}
-<details><summary>{{ .Description }}</summary><blockquote>
+<details><summary>{{ .Description | stripLinks }}</summary><blockquote>
 
 ### If :
 ```
-{{ .ConditionDetails }}
+{{ .ConditionDetails | stripLinks }}
 ```
 ### Then :
 ```
-{{ .RequirementDetails }}
+{{ .RequirementDetails | stripLinks }}
 ```
 </blockquote></details>
 {{ end }}
@@ -34,14 +34,14 @@ These requirements are defined in this [configuration file](https://github.com/G
 
 {{ if .ManualRules }}<details><summary><b>Details</b></summary><blockquote>
 {{ range .ManualRules }}
-<details><summary>{{ .Description }}</summary><blockquote>
+<details><summary>{{ .Description | stripLinks }}</summary><blockquote>
 
 ### If :
 ```
 {{ .ConditionDetails }}
 ```
 ### Can be checked by :
-{{range $item := .Teams }} - team {{ $item }}
+{{range $item := .Teams }} - team {{ $item | stripLinks }}
 {{ else }}
 - Any user with comment edit permission
 {{end}}
