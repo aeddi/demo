@@ -1,4 +1,4 @@
-module bot
+module gno-github-bot
 
 go 1.22.2
 
