@@ -1,4 +1,4 @@
-module gno-github-bot
+module github.com/GnoCheckBot/demo
 
 go 1.22.2
 
