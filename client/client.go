@@ -1,12 +1,13 @@
 package client
 
 import (
-	"bot/logger"
-	"bot/param"
 	"context"
 	"log"
 	"os"
 	"time"
+
+	"github.com/GnoCheckBot/demo/logger"
+	"github.com/GnoCheckBot/demo/param"
 
 	"github.com/google/go-github/v66/github"
 )

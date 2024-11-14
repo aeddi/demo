@@ -1,13 +1,14 @@
 package main
 
 import (
-	"bot/client"
 	"bytes"
 	"fmt"
 	"os"
 	"regexp"
 	"strings"
 	"text/template"
+
+	"github.com/GnoCheckBot/demo/client"
 
 	"github.com/google/go-github/v66/github"
 	"github.com/sethvargo/go-githubactions"

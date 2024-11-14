@@ -1,9 +1,10 @@
 package requirement
 
 import (
-	"bot/client"
-	"bot/utils"
 	"fmt"
+
+	"github.com/GnoCheckBot/demo/client"
+	"github.com/GnoCheckBot/demo/utils"
 
 	"github.com/google/go-github/v66/github"
 	"github.com/xlab/treeprint"

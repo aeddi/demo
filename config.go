@@ -1,9 +1,9 @@
 package main
 
 import (
-	"bot/client"
-	c "bot/condition"
-	r "bot/requirement"
+	"github.com/GnoCheckBot/demo/client"
+	c "github.com/GnoCheckBot/demo/condition"
+	r "github.com/GnoCheckBot/demo/requirement"
 )
 
 type automaticCheck struct {

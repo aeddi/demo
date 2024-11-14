@@ -1,9 +1,10 @@
 package condition
 
 import (
-	"bot/utils"
 	"fmt"
 	"regexp"
+
+	"github.com/GnoCheckBot/demo/utils"
 
 	"github.com/google/go-github/v66/github"
 	"github.com/xlab/treeprint"

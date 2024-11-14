@@ -1,9 +1,10 @@
 package main
 
 import (
-	"bot/client"
-	"bot/param"
 	"sync"
+
+	"github.com/GnoCheckBot/demo/client"
+	"github.com/GnoCheckBot/demo/param"
 
 	"github.com/google/go-github/v66/github"
 	"github.com/xlab/treeprint"
