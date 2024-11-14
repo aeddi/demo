@@ -79,7 +79,7 @@ jobs:
           elif [ '${{ github.event_name }}' = 'issue_comment' ]; then
             echo 'pr-numbers=["${{ github.event.issue.number }}"]' >> "$GITHUB_OUTPUT"
           # Triggered by pull request event, just add the associated PR number to the matrix
-          elif [ '${{ github.event_name }}' = 'pull_request' || '${{ github.event_name }}' = 'pull_request_target' ]; then
+          elif [ '${{ github.event_name }}' = 'pull_request' ] || [ '${{ github.event_name }}' = 'pull_request_target' ]; then
             echo 'pr-numbers=["${{ github.event.pull_request.number }}"]' >> "$GITHUB_OUTPUT"
           else
             echo 'Error : unknown event ${{ github.event_name }}' >&2 && exit 1
