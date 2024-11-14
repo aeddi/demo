@@ -12,6 +12,16 @@ on:
       - reopened
       - synchronize # PR head updated
 
+  pull_request_target:
+    types:
+      - assigned
+      - unassigned
+      - labeled
+      - unlabeled
+      - opened
+      - reopened
+      - synchronize # PR head updated
+
   # Watch for changes on PR comment
   issue_comment:
     types: [created, edited, deleted]
