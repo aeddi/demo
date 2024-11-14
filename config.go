@@ -33,7 +33,7 @@ func config(gh *client.GitHub) ([]automaticCheck, []manualCheck) {
 			Then: r.And(
 				r.Author("aeddi"),
 				r.Or(
-					r.ReviewByUser(gh, "thehowl"),
+					// r.ReviewByUser(gh, "thehowl"), // Stop bothering Morgan
 					r.ReviewByUser(gh, "ltzmaxwell"),
 					r.ReviewByUser(gh, "zivkovicmilos"),
 				),
